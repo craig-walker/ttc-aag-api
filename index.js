@@ -72,7 +72,7 @@ app.post(
       return response.status(422).json({ errors: errors.array() })
     }
 
-    const { skinTone, jawLine } = request.body
+    const { avatar, skinTone, jawLine } = request.body
 
     pool.query('INSERT INTO avatars (avatar, skinTone, jawLine) VALUES ($1, $2, $3)', [avatar, skinTone, jawLine], error => {
       if (error) {
