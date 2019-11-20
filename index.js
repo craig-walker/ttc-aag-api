@@ -53,7 +53,7 @@ app.post(
     check( 'skinTone' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'jawLine' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'nose' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
-    check( 'beard' ).isLength( { min: 1, max: 255 } ).trim(),
+    check( 'beard' ).isLength( { min: 0, max: 255 } ).trim(),
     check( 'hairColour' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'hairLength' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'hairLine' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
