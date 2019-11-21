@@ -32,11 +32,12 @@ app.use( helmet() )
 app.use( limiter )
 
 const getAvatars = ( request, response ) => {
+  const avatar = request.query.avatar || '%';
   const participantage = request.query.participantage || '%';
   const participantoccupation = request.query.participantoccupation || '%';
   const participantlocation = request.query.participantlocation || '%';
-  pool.query( 'SELECT * FROM avatars WHERE participantage LIKE $1 AND participantoccupation LIKE $2 AND participantlocation LIKE $3',
-    [participantage, participantoccupation, participantlocation],
+  pool.query( 'SELECT * FROM avatars WHERE CAST(avatar AS TEXT) LIKE $1 AND participantage LIKE $2 AND participantoccupation LIKE $3 AND participantlocation LIKE $4',
+    [avatar, participantage, participantoccupation, participantlocation],
     ( error, results ) => {
     if ( error ) {
       throw error
