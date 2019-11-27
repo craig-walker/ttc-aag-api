@@ -55,7 +55,7 @@ app
 app.post(
   '/avatars',
   [
-    check( 'avatar' ).not().isEmpty().isInt( { min: 1, max: 2 } ),
+    check( 'avatar' ).not().isEmpty().isInt( { min: 1, max: 3 } ),
     check( 'skintone' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'jawline' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'nose' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
