@@ -63,11 +63,9 @@ app.post(
     check( 'haircolour' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'hairlength' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'hairline' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
-    check( 'hairtexture' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'eyecolour' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'eyeshape' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'eyebrows' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
-    check( 'cheek' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'lips' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantage' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantoccupation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
@@ -90,11 +88,9 @@ app.post(
       haircolour,
       hairlength,
       hairline,
-      hairtexture,
       eyecolour,
       eyeshape,
       eyebrows,
-      cheek,
       lips,
       participantage,
       participantoccupation,
@@ -102,8 +98,8 @@ app.post(
     } = request.body
 
     pool.query(
-      'INSERT INTO avatars (avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, hairtexture, eyecolour, eyeshape, eyebrows, cheek, lips, participantage, participantoccupation, participantlocation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16, $17)',
-      [ avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, hairtexture, eyecolour, eyeshape, eyebrows, cheek, lips, participantage, participantoccupation, participantlocation ],
+      'INSERT INTO avatars (avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)',
+      [ avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation ],
       error => {
         if ( error ) {
           throw error
