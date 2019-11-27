@@ -14,12 +14,12 @@ const origin = {
 
 const limiter = rateLimit( {
   windowMs: 1 * 60 * 1000, // 1 minute
-  max: 10, // 10 requests,
+  max: 100, // 100 requests,
 } )
 
 const postLimiter = rateLimit( {
   windowMs: 1 * 60 * 1000,
-  max: 10,
+  max: 30,
 } )
 
 const app = express()
