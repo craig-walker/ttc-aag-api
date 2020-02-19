@@ -10,6 +10,6 @@ The API is hosting on the Craig Walker Heroku account, contact Pat Armstrong or 
 To run locally you must have Postgres installed on you machine.
 
 You will need to create a database by following: https://www.taniarascia.com/node-express-postgresql-heroku/#set-up-postgresql-database
-However you need to match the database config found in the inti.sql file in this repo not the database config from the tutorial
+However you need to name your new database `avatars_api` and match the database config found in the inti.sql file in this repo not the database config from the tutorial
 Then `npm start` in the terminal. That should allow you to then use the https://github.com/craig-walker/ttc-aag app locally and talk to a local database
 
