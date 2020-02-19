@@ -15,7 +15,7 @@ CREATE TABLE avatars (
   participantAge VARCHAR(40) NOT NULL,
   participantOccupation VARCHAR(40) NOT NULL,
   participantLocation VARCHAR(40) NOT NULL,
-  workshop BOOL DEFAULT false;
+  workshop BOOL DEFAULT false,
   posting_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
