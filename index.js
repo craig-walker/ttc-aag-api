@@ -36,8 +36,9 @@ const getAvatars = ( request, response ) => {
   const participantage = request.query.participantage || '%';
   const participantoccupation = request.query.participantoccupation || '%';
   const participantlocation = request.query.participantlocation || '%';
+  const workshop = request.query.workshop || '%';
   pool.query( 'SELECT * FROM avatars WHERE CAST(avatar AS TEXT) LIKE $1 AND participantage LIKE $2 AND participantoccupation LIKE $3 AND participantlocation LIKE $4',
-    [avatar, participantage, participantoccupation, participantlocation],
+    [avatar, participantage, participantoccupation, participantlocation, workshop],
     ( error, results ) => {
     if ( error ) {
       throw error
@@ -70,6 +71,7 @@ app.post(
     check( 'participantage' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantoccupation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantlocation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
+    check( 'workshop' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
   ],
   postLimiter,
   ( request, response ) => {
@@ -94,12 +96,13 @@ app.post(
       lips,
       participantage,
       participantoccupation,
-      participantlocation
+      participantlocation,
+      workshop
     } = request.body
 
     pool.query(
-      'INSERT INTO avatars (avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15)',
-      [ avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation ],
+      'INSERT INTO avatars (avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation, workshop) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16)',
+      [ avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation, workshop ],
       error => {
         if ( error ) {
           throw error
