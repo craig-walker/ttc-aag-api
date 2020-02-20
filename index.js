@@ -47,6 +47,17 @@ const getAvatars = ( request, response ) => {
   } )
 }
 
+const getAvatarsById = (request, response) => {
+  const id = parseInt(request.params.id)
+
+  pool.query('SELECT * FROM avatars WHERE id = $1', [id], (error, results) => {
+    if (error) {
+      throw error
+    }
+    response.status(200).json(results.rows)
+  })
+}
+
 app
 .route( '/avatars' )
 // GET endpoint
@@ -71,7 +82,7 @@ app.post(
     check( 'participantage' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantoccupation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantlocation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
-    check( 'workshop' ).exists()
+    check( 'workshop' ).not()
   ],
   postLimiter,
   ( request, response ) => {
