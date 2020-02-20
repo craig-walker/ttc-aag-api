@@ -19,5 +19,5 @@ CREATE TABLE avatars (
   posting_date DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
-INSERT INTO avatars (avatar, skinTone, jawLine, nose, beard, hairColour, hairLength, hairLine, eyeColour, eyeShape, eyeBrows, lips, participantAge, participantOccupation, participantLocation)
+INSERT INTO avatars (avatar, skinTone, jawLine, nose, beard, hairColour, hairLength, hairLine, eyeColour, eyeShape, eyeBrows, lips, participantAge, participantOccupation, participantLocation, workshop)
 VALUES  (1, 'a', 'b', 'c', 'd', 'e', 'f', 'h', 'i', 'j', 'k', 'l', 'n', 'o', 'p', 'q', 'r' );
