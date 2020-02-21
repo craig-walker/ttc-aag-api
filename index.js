@@ -82,7 +82,7 @@ app.post(
     check( 'participantage' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantoccupation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
     check( 'participantlocation' ).not().isEmpty().isLength( { min: 1, max: 255 } ).trim(),
-    check( 'workshop' ).not()
+    check( 'workshop' ).not().isEmpty()
   ],
   postLimiter,
   ( request, response ) => {
