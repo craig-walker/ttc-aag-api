@@ -37,7 +37,7 @@ const getAvatars = ( request, response ) => {
   const participantoccupation = request.query.participantoccupation || '%';
   const participantlocation = request.query.participantlocation || '%';
   const workshop = request.query.workshop || '%';
-  pool.query( 'SELECT * FROM avatars WHERE CAST(avatar AS TEXT) LIKE $1 AND participantage LIKE $2 AND participantoccupation LIKE $3 AND participantlocation LIKE $4 AND workshop LIKE $5',
+  pool.query( 'SELECT * FROM avatars WHERE CAST(avatar AS TEXT) LIKE $1 AND participantage LIKE $2 AND participantoccupation LIKE $3 AND participantlocation LIKE $4 AND CAST(workshop AS TEXT) LIKE $5',
     [avatar, participantage, participantoccupation, participantlocation, workshop],
     ( error, results ) => {
     if ( error ) {
