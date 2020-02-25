@@ -112,13 +112,13 @@ app.post(
     } = request.body
 
     pool.query(
-      'INSERT INTO avatars (avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation, workshop) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING id',
+      'INSERT INTO avatars (avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation, workshop) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15, $16) RETURNING id, avatar',
       [ avatar, skintone, jawline, nose, beard, haircolour, hairlength, hairline, eyecolour, eyeshape, eyebrows, lips, participantage, participantoccupation, participantlocation, workshop ],
       ( error, result ) => {
         if ( error ) {
           throw error
         }
-        response.status( 201 ).json( { status: 'success', message: 'Avatar added.', id: result.rows[0].id } )
+        response.status( 201 ).json( { status: 'success', message: 'Avatar added.', id: result.rows[0].id, avatar: result.rows[0].avatar } )
       } )
   }
 )
