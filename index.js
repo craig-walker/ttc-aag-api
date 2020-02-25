@@ -52,7 +52,7 @@ const getAvatarsById = (request, response) => {
   const id2 = parseInt( request.query.id2 ) || '0';
   const id3 = parseInt( request.query.id3 ) || '0';
   console.log( id1 + ', ' + id2  + ', ' + id3 );
-  pool.query('SELECT * FROM avatars WHERE id = $1 OR id = $2 OR id = $3', [id1, id2, id3], (error, results) => {
+  pool.query('SELECT * FROM avatars WHERE id IN ($1, $2, $3)', [id1, id2, id3], (error, results) => {
     if (error) {
       throw error
     }
