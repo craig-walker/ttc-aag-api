@@ -48,7 +48,7 @@ const getAvatars = ( request, response ) => {
 }
 
 const getAvatarsById = (request, response) => {
-  const id1 = parseInt( request.query.id1 ) || '0';
+  const id1 = parseInt( request.query.id1 );
   const id2 = parseInt( request.query.id2 ) || '0';
   const id3 = parseInt( request.query.id3 ) || '0';
   console.log( id1 + ', ' + id2  + ', ' + id3 );
